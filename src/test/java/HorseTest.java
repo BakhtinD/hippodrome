@@ -57,7 +57,7 @@ class HorseTest {
     @Test
     @ExtendWith(MockitoExtension.class)
     void ifDistanceCalculationIsCorrect(){
-
+        //TODO
     }
 
 }
