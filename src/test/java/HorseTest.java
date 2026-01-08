@@ -54,10 +54,10 @@ class HorseTest {
         }
     }
 
-    @Test
-    @ExtendWith(MockitoExtension.class)
-    void ifDistanceCalculationIsCorrect(){
-        //TODO
-    }
+//    @Test
+//    @ExtendWith(MockitoExtension.class)
+//    void ifDistanceCalculationIsCorrect(){
+//        //TODO
+//    }
 
 }
