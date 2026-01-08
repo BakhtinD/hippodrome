@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class HippodromeTest {
 
     @Test
@@ -27,7 +28,6 @@ class HippodromeTest {
     }
 
     @Test
-    @ExtendWith(MockitoExtension.class)
     void move() {
         List<Horse> list = new ArrayList<>(50);
         for (int i = 0; i < 50; i++) {
@@ -38,6 +38,7 @@ class HippodromeTest {
             list.add(horse);
         }
         Hippodrome hippodrome = new Hippodrome(list);
+        hippodrome.move();
         List<Horse> got = hippodrome.getHorses();
         for (Horse horse : got) {
             verify(horse).move();
