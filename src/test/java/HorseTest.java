@@ -3,6 +3,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -54,10 +56,17 @@ class HorseTest {
         }
     }
 
-//    @Test
-//    @ExtendWith(MockitoExtension.class)
-//    void ifDistanceCalculationIsCorrect(){
-//        //TODO
-//    }
+    @ParameterizedTest
+    @ValueSource(doubles = {0.3, 0.4, 0.5, 0.6, 0.7, 0.8})
+    @ExtendWith(MockitoExtension.class)
+    void ifDistanceCalculationIsCorrect(double input) {
+        try (MockedStatic<Horse> mock = Mockito.mockStatic(Horse.class)) {
+            mock.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(input);
+            double expected = horse.getDistance() + horse.getSpeed() * input;
+            horse.move();
+            assertEquals(expected, horse.getDistance());
+        }
+
+    }
 
 }

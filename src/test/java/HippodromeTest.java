@@ -45,7 +45,16 @@ class HippodromeTest {
         }
     }
 
-//    @Test
-//    void getWinner() {
-//    }
+    @Test
+    void getWinner() {
+        List<Horse> list = new ArrayList<>(30);
+        for (int i = 0; i < 30; i++) {
+            int randomInt = ThreadLocalRandom.current().nextInt(127);
+            char character = (char) randomInt;
+            Horse horse = new Horse(character + "a", randomInt, i);
+            list.add(horse);
+        }
+        Hippodrome hippodrome = new Hippodrome(list);
+        assertEquals(29, hippodrome.getWinner().getDistance());
+    }
 }
